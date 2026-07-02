@@ -73,19 +73,23 @@ button:focus-visible {
 }
 .skip-link:focus-visible { transform: none; }
 
-/* ============ 動畫基元 ============ */
-.rise { opacity: 0; animation: rise 0.7s var(--ease) forwards; }
-.d1 { animation-delay: 0.08s; }
-.d2 { animation-delay: 0.16s; }
-.d3 { animation-delay: 0.24s; }
-.d4 { animation-delay: 0.36s; }
+/* ============ 動畫基元 ============
+   html.js-anim 時由 GSAP 接手；否則退回 CSS 動畫 */
+.rise, .reveal { opacity: 0; }
+.mask { display: block; overflow: hidden; }
+.line { display: block; }
+
+html:not(.js-anim) .rise { animation: rise 0.7s var(--ease) forwards; }
+html:not(.js-anim) .d1 { animation-delay: 0.08s; }
+html:not(.js-anim) .d2 { animation-delay: 0.16s; }
+html:not(.js-anim) .d3 { animation-delay: 0.24s; }
+html:not(.js-anim) .d4 { animation-delay: 0.36s; }
 @keyframes rise {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: none; }
 }
 
-.reveal {
-  opacity: 0;
+html:not(.js-anim) .reveal {
   transform: translateY(14px);
   transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
 }
@@ -230,7 +234,9 @@ button:focus-visible {
   letter-spacing: 0.06em;
   transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s var(--ease);
 }
-.btn:hover { transform: translateY(-2px); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-2px); }
+}
 .btn-ink {
   background: var(--ink);
   color: var(--paper);
