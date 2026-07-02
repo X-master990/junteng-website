@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>駿騰智能 JunTeng Intelligence｜AI 驅動的客製化系統開發</title>
+  <meta name="description" content="駿騰智能專注於 AI 驅動的客製化管理系統開發：授權管理、流程自動化、資料清洗遷移與智慧文件處理。用 AI 的產能，交付企業級的可靠。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2338bdf8'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='%230a0e1a'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='url(%23g)' font-family='sans-serif' font-weight='bold'%3E駿%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#top">跳到主要內容</a>
+
+  <!-- ===== 導覽列 ===== -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="34" height="34">
+            <defs>
+              <linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#38bdf8"/>
+                <stop offset="1" stop-color="#8b5cf6"/>
+              </linearGradient>
+            </defs>
+            <rect x="1" y="1" width="38" height="38" rx="10" fill="none" stroke="url(#logo-g)" stroke-width="2"/>
+            <path d="M10 28 L20 10 L24 18 L30 12" fill="none" stroke="url(#logo-g)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="30" cy="12" r="2.4" fill="#38bdf8"/>
+          </svg>
+        </span>
+        <span class="brand-text" translate="no">駿騰智能<small>JUNTENG INTELLIGENCE</small></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">關於我們</a>
+        <a href="#services">服務項目</a>
+        <a href="#case">精選專案</a>
+        <a href="#process">開發流程</a>
+        <a href="#contact" class="nav-cta">聯絡我們</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <canvas id="particles" aria-hidden="true"></canvas>
+      <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="hero-eyebrow reveal">AI-NATIVE SOFTWARE STUDIO</p>
+        <h1 class="hero-title reveal delay-1">
+          用 <span class="grad">AI 的產能</span>，<br>
+          交付<span class="grad">企業級的可靠</span>
+        </h1>
+        <p class="hero-sub reveal delay-2">
+          駿騰智能為協會、公會與中小企業打造專屬的
+          <span class="sr-only">客製化管理系統</span>
+          <span class="type-wrap" aria-hidden="true"><span id="typewriter"></span><span class="caret"></span></span><br>
+          從需求訪談到上線維運，以週為單位快速交付。
+        </p>
+        <div class="hero-actions reveal delay-3">
+          <a href="#case" class="btn btn-primary">看看我們做了什麼</a>
+          <a href="#contact" class="btn btn-ghost">預約免費諮詢</a>
+        </div>
+        <div class="hero-stats reveal delay-4">
+          <div class="stat">
+            <span class="stat-num" data-count="14610">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">筆歷史資料清洗匯入</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="6">0</span><span class="stat-plus"></span>
+            <span class="stat-label">大核心系統模組</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="100">0</span><span class="stat-plus">ms</span>
+            <span class="stat-label">全文搜尋回應速度以內</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="3">0</span><span class="stat-plus">週</span>
+            <span class="stat-label">最快從需求到可用原型</span>
+          </div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-hint" aria-label="往下捲動">
+        <span class="mouse"><span class="wheel"></span></span>
+      </a>
+    </section>
+
+    <!-- ===== 關於我們 ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <p class="section-eyebrow reveal">ABOUT US</p>
+        <h2 class="section-title reveal">小團隊，<span class="grad">大產能</span></h2>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              駿騰智能是一間 <strong>AI-native</strong> 的軟體開發工作室。我們把 AI 深度整合進開發流程的每一個環節——
+              從會議錄音自動轉成需求規格、歷史資料智慧清洗，到文件模板自動比對——
+              讓精實的團隊擁有過去需要一整個部門才有的交付能力。
+            </p>
+            <p>
+              但我們同樣清楚 <strong>AI 不該用在哪裡</strong>：金額、日期、權限、序號等關鍵邏輯，
+              一律採用 100% 可重現的確定性規則。AI 負責「理解與建議」，人與規則負責「決策與把關」。
+              這是我們對可靠的堅持。
+            </p>
+          </div>
+          <div class="about-cards">
+            <div class="mini-card reveal delay-1">
+              <div class="mini-icon">⚡</div>
+              <h3>快速交付</h3>
+              <p>以週為單位迭代，最快 3 週從需求訪談走到可操作原型。</p>
+            </div>
+            <div class="mini-card reveal delay-2">
+              <div class="mini-icon">🛡️</div>
+              <h3>可靠優先</h3>
+              <p>財務與法務級邏輯走確定性規則，AI 建議一律經人工確認。</p>
+            </div>
+            <div class="mini-card reveal delay-3">
+              <div class="mini-icon">💰</div>
+              <h3>成本透明</h3>
+              <p>輕量雲端架構，維運成本以千元計，不綁高額年約。</p>
+            </div>
+            <div class="mini-card reveal delay-4">
+              <div class="mini-icon">🤝</div>
+              <h3>長期夥伴</h3>
+              <p>上線不是結束。持續維運、持續優化，與客戶一起成長。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 服務項目 ===== -->
+    <section class="section section-alt" id="services">
+      <div class="container">
+        <p class="section-eyebrow reveal">SERVICES</p>
+        <h2 class="section-title reveal">服務項目</h2>
+        <p class="section-sub reveal">從系統開發到 AI 導入，我們提供端到端的數位化解決方案。</p>
+        <div class="service-grid">
+          <article class="card reveal">
+            <div class="card-icon">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l3 3-3 3M13 15h4"/></svg>
+            </div>
+            <h3>客製化管理系統</h3>
+            <p>為協會、公會與中小企業打造專屬作業系統：授權申請、續約管理、發票配號、報表匯出、多角色協作，完全貼合既有作業流程。</p>
+            <ul class="card-tags"><li>授權管理</li><li>續約自動化</li><li>發票整合</li></ul>
+          </article>
+          <article class="card reveal delay-1">
+            <div class="card-icon">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.1-.45 2.1-1.17 2.83L12 12l-2.83-3.17A4 4 0 0 1 12 2z"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 12v3M12 15l-5 2M12 15l5 2"/></svg>
+            </div>
+            <h3>AI 導入顧問</h3>
+            <p>系統性盤點你的作業流程，找出真正值得導入 AI 的環節——也誠實告訴你哪裡不該用。附優先序、風險評估與落地路線圖。</p>
+            <ul class="card-tags"><li>機會盤點</li><li>風險控管</li><li>落地路線圖</li></ul>
+          </article>
+          <article class="card reveal delay-2">
+            <div class="card-icon">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+            </div>
+            <h3>資料清洗與遷移</h3>
+            <p>十年份的 Excel、格式混亂的日期與金額、打錯的欄位——LLM 輔助逐格理解與修復建議，把「幾天的人工」壓成「幾小時的複核」。</p>
+            <ul class="card-tags"><li>Excel 智慧清洗</li><li>欄位自動對應</li><li>資料庫遷移</li></ul>
+          </article>
+          <article class="card reveal delay-3">
+            <div class="card-icon">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+            </div>
+            <h3>智慧文件自動化</h3>
+            <p>證書與公文 Word 模板套印、紙本申請書拍照自動建檔（OCR）、通知函批次生成——把重複的文書工作交給系統。</p>
+            <ul class="card-tags"><li>模板套印</li><li>OCR 建檔</li><li>信函生成</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 精選專案 ===== -->
+    <section class="section" id="case">
+      <div class="container">
+        <p class="section-eyebrow reveal">FEATURED PROJECT</p>
+        <h2 class="section-title reveal">精選專案</h2>
+        <div class="case-card reveal">
+          <div class="case-head">
+            <span class="case-badge">音樂著作權集體管理協會</span>
+            <h3>音樂授權管理系統</h3>
+            <p class="case-lead">
+              把散落在十年份 Excel 與紙本流程中的授權業務，整合成一套線上即時協作系統。
+              承辦、會計、法務在同一份「總表」上作業：續約名單自動偵測、續約函與證書一鍵套印、
+              發票號碼自動配號寫回——原本要加班處理的月底續約作業，現在幾個點擊完成。
+            </p>
+          </div>
+          <div class="case-body">
+            <div class="case-features">
+              <div class="feature reveal delay-1">
+                <span class="feature-dot"></span>
+                <div><h4>續約自動偵測</h4><p>依到期日自動篩出未續約店家，一鍵生成續約資料列。</p></div>
+              </div>
+              <div class="feature reveal delay-2">
+                <span class="feature-dot"></span>
+                <div><h4>發票序號控管</h4><p>資料庫層級鎖定配號，序號不跳號、不重號，會計安心。</p></div>
+              </div>
+              <div class="feature reveal delay-3">
+                <span class="feature-dot"></span>
+                <div><h4>AI 資料清洗</h4><p>14,610 筆歷史資料匯入，LLM 輔助修復無法解析的髒資料。</p></div>
+              </div>
+              <div class="feature reveal delay-4">
+                <span class="feature-dot"></span>
+                <div><h4>多角色權限</h4><p>承辦、會計、法務各司其職，防誤改機制保護每一筆資料。</p></div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric reveal delay-1"><span class="metric-num" data-count="14610">0</span><span class="metric-unit">+ 筆</span><p>歷史資料成功遷移</p></div>
+              <div class="metric reveal delay-2"><span class="metric-num" data-count="90">0</span><span class="metric-unit">%</span><p>續約文書作業時間縮減</p></div>
+              <div class="metric reveal delay-3"><span class="metric-num" data-count="100">0</span><span class="metric-unit">ms</span><p>萬筆資料全文搜尋以內</p></div>
+            </div>
+          </div>
+          <div class="case-stack reveal">
+            <span class="stack-label">技術架構</span>
+            <ul>
+              <li>React 18</li><li>FastAPI</li><li>PostgreSQL 15</li><li>Docker</li><li>Claude API</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 開發流程 ===== -->
+    <section class="section section-alt" id="process">
+      <div class="container">
+        <p class="section-eyebrow reveal">HOW WE WORK</p>
+        <h2 class="section-title reveal">開發流程</h2>
+        <p class="section-sub reveal">每一步都有 AI 加速，每一步都有人把關。</p>
+        <ol class="timeline">
+          <li class="timeline-item reveal">
+            <span class="timeline-num">01</span>
+            <div>
+              <h3>深度需求訪談</h3>
+              <p>會議錄音 AI 逐字稿分析，連口頭討論的細節都不遺漏，直接轉成結構化需求清單。</p>
+            </div>
+          </li>
+          <li class="timeline-item reveal delay-1">
+            <span class="timeline-num">02</span>
+            <div>
+              <h3>原型設計確認</h3>
+              <p>快速產出可點擊的介面原型，先看到、先摸到，確認方向再動工。</p>
+            </div>
+          </li>
+          <li class="timeline-item reveal delay-2">
+            <span class="timeline-num">03</span>
+            <div>
+              <h3>敏捷開發迭代</h3>
+              <p>以週為單位交付可用功能，每週看得到進度，隨時能調整優先序。</p>
+            </div>
+          </li>
+          <li class="timeline-item reveal delay-3">
+            <span class="timeline-num">04</span>
+            <div>
+              <h3>資料遷移上線</h3>
+              <p>歷史資料智慧清洗匯入、完整測試報告、平滑切換，不中斷日常作業。</p>
+            </div>
+          </li>
+          <li class="timeline-item reveal delay-4">
+            <span class="timeline-num">05</span>
+            <div>
+              <h3>持續維運強化</h3>
+              <p>上線後持續監控與優化，並隨業務成長逐步導入更多 AI 能力。</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== 技術跑馬燈 ===== -->
+    <section class="marquee-section">
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>React</span><span>•</span><span>FastAPI</span><span>•</span><span>PostgreSQL</span><span>•</span><span>Docker</span><span>•</span><span>Claude API</span><span>•</span><span>Python</span><span>•</span><span>TypeScript</span><span>•</span><span>Whisper</span><span>•</span><span>LLM Pipeline</span><span>•</span>
+          <span>React</span><span>•</span><span>FastAPI</span><span>•</span><span>PostgreSQL</span><span>•</span><span>Docker</span><span>•</span><span>Claude API</span><span>•</span><span>Python</span><span>•</span><span>TypeScript</span><span>•</span><span>Whisper</span><span>•</span><span>LLM Pipeline</span><span>•</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 聯絡我們 ===== -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div class="contact-glow" aria-hidden="true"></div>
+          <p class="section-eyebrow">CONTACT</p>
+          <h2 class="section-title">聊聊你的<span class="grad">下一套系統</span></h2>
+          <p class="contact-sub">
+            還在用 Excel 管理上萬筆資料？月底續約要全員加班？<br>
+            30 分鐘免費諮詢，我們告訴你系統化與 AI 導入的可行路線。
+          </p>
+          <a href="mailto:yangccagency@gmail.com?subject=%E3%80%90%E8%AB%AE%E8%A9%A2%E3%80%91%E7%B3%BB%E7%B5%B1%E9%96%8B%E7%99%BC%E9%9C%80%E6%B1%82" class="btn btn-primary btn-lg">來信諮詢 →</a>
+          <p class="contact-mail">yangccagency@gmail.com</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 駿騰智能 JunTeng Intelligence. All rights reserved.</span>
+      <nav>
+        <a href="#about">關於</a>
+        <a href="#services">服務</a>
+        <a href="#case">專案</a>
+        <a href="#contact">聯絡</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
