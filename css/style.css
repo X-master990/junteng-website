@@ -845,6 +845,14 @@ html.js-anim .geo-shape { opacity: 0; }
   font-weight: 700;
   margin-bottom: 4px;
 }
+.case2-facts {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--hairline);
+  font-size: 0.74rem;
+  color: var(--graphite);
+  letter-spacing: 0.06em;
+}
 
 /* ============ 開發流程 ============ */
 .steps { counter-reset: step; }
