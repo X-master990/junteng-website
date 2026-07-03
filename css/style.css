@@ -552,6 +552,110 @@ html.js-anim .geo-shape { opacity: 0; }
 }
 .sec-head { margin-bottom: 56px; }
 
+/* ============ 理念與產品 ============ */
+.thesis { max-width: 780px; }
+.thesis-lead {
+  color: var(--graphite);
+  font-size: 1.05rem;
+}
+.thesis-core {
+  margin-top: 12px;
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 3.8vw, 2.35rem);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-wrap: balance;
+  background: linear-gradient(90deg, #A5B4FC, rgba(255, 255, 255, 0.92) 55%, #FDA4AF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.thesis-duo {
+  margin-top: 40px;
+  padding: 24px 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--seal);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 2.1;
+}
+.thesis-duo p:first-child { color: var(--graphite); }
+.thesis-duo .is-strong { color: var(--ink); font-weight: 700; }
+.u-first {
+  color: #E0644A;
+  background-image: linear-gradient(rgba(198, 63, 31, 0.55), rgba(198, 63, 31, 0.55));
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: 0 100%;
+  padding-bottom: 2px;
+}
+
+.products { margin-top: 76px; }
+.products-intro {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 26px;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.p-card {
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  transition: transform 0.35s var(--ease), border-color 0.35s, background 0.35s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .p-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+.p-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.p-card h3 {
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.p-chip {
+  flex: none;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.p-chip.is-live {
+  color: var(--ink);
+  border: 1px solid var(--hairline);
+  background: rgba(255, 255, 255, 0.06);
+}
+.p-chip.is-plan {
+  color: var(--graphite);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+.p-card > p {
+  margin-top: 10px;
+  color: var(--graphite);
+  font-size: 0.93rem;
+  max-width: 44ch;
+}
+
 /* ============ 服務項目 ============ */
 .service-row {
   display: grid;
@@ -734,6 +838,7 @@ html.js-anim .geo-shape { opacity: 0; }
   .stats { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(3) { border-left: 0; }
   .case-grid { grid-template-columns: 1fr; gap: 44px; }
+  .product-grid { grid-template-columns: 1fr; }
   .service-row { grid-template-columns: 1fr; gap: 10px; padding: 28px 0; }
 }
 
