@@ -120,30 +120,44 @@ html:not(.js-anim) .reveal {
 .brand {
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 12px;
 }
 .seal {
-  display: grid;
-  place-items: center;
-  width: 32px; height: 32px;
-  background: var(--seal);
-  color: #FDFDFB;
-  font-family: var(--serif);
-  font-weight: 900;
-  font-size: 19px;
-  border-radius: 4px;
+  display: block;
+  width: 36px; height: 36px;
   transform: rotate(-2deg);
+  filter: drop-shadow(0 2px 12px rgba(198, 63, 31, 0.4));
+  transition: transform 0.35s var(--ease), filter 0.35s;
   animation: stamp 0.5s var(--ease) 0.15s backwards;
+}
+.seal svg { display: block; }
+@media (hover: hover) and (pointer: fine) {
+  .brand:hover .seal {
+    transform: rotate(0deg) scale(1.05);
+    filter: drop-shadow(0 3px 16px rgba(198, 63, 31, 0.6));
+  }
 }
 @keyframes stamp {
   0%   { opacity: 0; transform: scale(1.5) rotate(-6deg); }
   65%  { opacity: 1; transform: scale(0.94) rotate(-2deg); }
   100% { opacity: 1; transform: scale(1) rotate(-2deg); }
 }
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
 .brand-name {
-  font-weight: 700;
-  font-size: 1.06rem;
-  letter-spacing: 0.14em;
+  font-weight: 900;
+  font-size: 1.02rem;
+  letter-spacing: 0.2em;
+}
+.brand-en {
+  margin-top: 2px;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.34em;
+  color: var(--graphite);
 }
 .nav-links {
   display: flex;
@@ -738,6 +752,7 @@ html.js-anim .geo-shape { opacity: 0; }
     transition: opacity 0.3s;
   }
   .nav-links.open { opacity: 1; pointer-events: auto; }
+  .brand-en { display: none; }
   .hero { padding-top: calc(var(--nav-h) + 64px); }
   .product-window { margin-top: 52px; }
   .g1 .geo-pill { width: 420px; height: 100px; }
