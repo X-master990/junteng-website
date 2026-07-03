@@ -1044,6 +1044,12 @@ html.js-anim .geo-shape { opacity: 0; }
   max-width: 34em;
   text-wrap: balance;
 }
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 .contact-mail {
   margin-top: 20px;
   font-size: 0.85rem;

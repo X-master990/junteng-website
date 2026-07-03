@@ -151,7 +151,7 @@
         var pChip = posOf(chip);
         var pInv = posOf(inv);
         var pPrint = posOf(printBtn);
-        var invoiceNo = "KA-22841139";
+        var invoiceNo = "XY-00000004";
         var counter = { n: 0 };
 
         gsap.timeline({ onComplete: function () { setTimeout(play, 3000); } })
