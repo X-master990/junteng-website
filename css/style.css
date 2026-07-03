@@ -410,6 +410,33 @@ html.js-anim .geo-shape { opacity: 0; }
   border-color: rgba(198, 63, 31, 0.35);
   background: #FBEFEB;
 }
+.pw-app { position: relative; }
+.demo-cursor {
+  position: absolute;
+  top: 0; left: 0;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: rgba(28, 27, 24, 0.85);
+  border: 2px solid #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+}
+.pw-filter.is-on {
+  color: #C63F1F;
+  border-color: #C63F1F;
+  background: #FBEFEB;
+  box-shadow: 0 0 0 3px rgba(198, 63, 31, 0.15);
+}
+.pw-roles .on {
+  background: #1C1B18;
+  color: #FDFDFB;
+}
+.pw-roles .off {
+  background: none;
+  color: #6E6B64;
+}
 .pw-roles {
   margin-left: auto;
   display: flex;

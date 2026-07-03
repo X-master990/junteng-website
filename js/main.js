@@ -92,8 +92,92 @@
       }
     });
 
+    /* 總表動態展示：假游標循環操作（篩選 → 續約 → 開發票） */
+    function setupDemo() {
+      var app = document.querySelector(".pw-app");
+      var filter = document.getElementById("demoFilter");
+      var chip = document.getElementById("demoChip");
+      var inv = document.getElementById("demoInv");
+      var roles = document.getElementById("demoRoles");
+      if (!app || !filter || !chip || !inv || !roles) return;
+
+      var lead = roles.querySelector("b");
+      var acct = roles.querySelector("i");
+      var cursor = document.createElement("span");
+      cursor.className = "demo-cursor";
+      app.appendChild(cursor);
+      gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+
+      var dimRows = Array.prototype.filter.call(
+        document.querySelectorAll(".pw-table tbody tr"),
+        function (tr) { return !tr.classList.contains("is-due"); }
+      );
+
+      var visible = true;
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(app);
+      }
+
+      function posOf(el) {
+        var a = app.getBoundingClientRect();
+        var r = el.getBoundingClientRect();
+        return { x: r.left - a.left + r.width / 2, y: r.top - a.top + r.height / 2 };
+      }
+
+      function reset() {
+        chip.textContent = "待續約";
+        chip.className = "chip chip-due";
+        inv.textContent = "—";
+        filter.textContent = "待續約 12";
+        filter.classList.remove("is-on");
+        lead.classList.remove("off");
+        acct.classList.remove("on");
+        gsap.set(dimRows, { opacity: 1 });
+      }
+
+      function play() {
+        if (document.hidden || !visible) { setTimeout(play, 1500); return; }
+        reset();
+        var pFilter = posOf(filter);
+        var pChip = posOf(chip);
+        var pInv = posOf(inv);
+        var invoiceNo = "KA-22841139";
+        var counter = { n: 0 };
+
+        gsap.timeline({ onComplete: function () { setTimeout(play, 2800); } })
+          .set(cursor, { x: pFilter.x + 90, y: pFilter.y + 110, autoAlpha: 0 })
+          .to(cursor, { autoAlpha: 1, duration: 0.25 })
+          .to(cursor, { x: pFilter.x, y: pFilter.y, duration: 0.7, ease: "power2.inOut" })
+          .to(cursor, { scale: 0.75, duration: 0.1, yoyo: true, repeat: 1 })
+          .call(function () { filter.classList.add("is-on"); })
+          .to(dimRows, { opacity: 0.22, duration: 0.4 }, "<")
+          .to(cursor, { x: pChip.x, y: pChip.y, duration: 0.7, ease: "power2.inOut" }, "+=0.4")
+          .to(cursor, { scale: 0.75, duration: 0.1, yoyo: true, repeat: 1 })
+          .call(function () {
+            chip.textContent = "已續約";
+            chip.className = "chip chip-ok";
+            filter.textContent = "待續約 11";
+          })
+          .fromTo(chip, { scale: 0.7 }, { scale: 1, duration: 0.35, ease: "back.out(2.5)" })
+          .call(function () { lead.classList.add("off"); acct.classList.add("on"); }, null, "+=0.35")
+          .to(cursor, { x: pInv.x, y: pInv.y, duration: 0.6, ease: "power2.inOut" })
+          .to(counter, {
+            n: invoiceNo.length,
+            duration: 0.8,
+            ease: "none",
+            onUpdate: function () {
+              inv.textContent = invoiceNo.slice(0, Math.round(counter.n)) || "—";
+            }
+          })
+          .to(cursor, { autoAlpha: 0, duration: 0.3 }, "+=1");
+      }
+
+      setTimeout(play, 1400);
+    }
+
     /* Container Scroll：總表隨捲動從 3D 傾斜立正（開場結束後接手） */
     intro.eventCallback("onComplete", function () {
+      setupDemo();
       gsap.fromTo(".product-window",
         { rotationX: 16, scale: 0.96, transformPerspective: 1100, transformOrigin: "50% 0%" },
         {

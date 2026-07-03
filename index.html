@@ -77,8 +77,8 @@
         <a href="#case" class="btn btn-line">看看實際案例</a>
       </div>
 
-      <!-- 產品畫面（示意） -->
-      <div class="product-window rise d4" role="img" aria-label="授權管理系統的總表畫面示意：可搜尋、篩選待續約店家，狀態與發票號碼一目瞭然">
+      <!-- 產品畫面（動態展示） -->
+      <div class="product-window rise d4" role="img" aria-label="授權管理系統的總表操作展示：篩選待續約店家、一鍵續約、發票自動配號">
         <div class="pw-chrome" aria-hidden="true">
           <span class="pw-dot"></span><span class="pw-dot"></span><span class="pw-dot"></span>
           <span class="pw-url">授權管理系統──總表</span>
@@ -87,8 +87,8 @@
           <div class="pw-toolbar">
             <span class="pw-search">搜尋店名、發票號碼…</span>
             <span class="pw-filter">115 年度</span>
-            <span class="pw-filter is-due">待續約 12</span>
-            <span class="pw-roles"><b>承辦</b><i>會計</i><i>法務</i></span>
+            <span class="pw-filter is-due" id="demoFilter">待續約 12</span>
+            <span class="pw-roles" id="demoRoles"><b>承辦</b><i>會計</i><i>法務</i></span>
           </div>
           <div class="pw-scroll">
             <table class="pw-table">
@@ -97,7 +97,7 @@
               </thead>
               <tbody>
                 <tr><td>3100241</td><td>昇平商行</td><td>電腦伴唱機</td><td>115.01.01–115.12.31</td><td><span class="chip chip-ok">已續約</span></td><td>KA-22841077</td></tr>
-                <tr class="is-due"><td>3100587</td><td>金采餐廳</td><td>電腦伴唱機</td><td>114.07.01–115.06.30</td><td><span class="chip chip-due">待續約</span></td><td>—</td></tr>
+                <tr class="is-due" id="demoRow"><td>3100587</td><td>金采餐廳</td><td>電腦伴唱機</td><td>114.07.01–115.06.30</td><td><span class="chip chip-due" id="demoChip">待續約</span></td><td id="demoInv">—</td></tr>
                 <tr><td>5200113</td><td>河岸音樂節</td><td>單場演出</td><td>115.08.15</td><td><span class="chip chip-ok">已開票</span></td><td>KA-22841102</td></tr>
                 <tr><td>3101022</td><td>悅來大飯店</td><td>營利性場所</td><td>115.03.01–116.02.28</td><td><span class="chip chip-ok">已續約</span></td><td>KA-22841138</td></tr>
                 <tr class="is-due"><td>6100078</td><td>街聲藝文工作室</td><td>公益性演出</td><td>115.09.01</td><td><span class="chip chip-due">待續約</span></td><td>—</td></tr>
