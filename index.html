@@ -37,10 +37,35 @@
         </span>
       </a>
       <nav class="nav-links" id="navLinks">
-        <a href="#thesis">理念</a>
-        <a href="#services">服務</a>
-        <a href="#case">案例</a>
-        <a href="#process">流程</a>
+        <div class="nav-item open">
+          <button class="nav-drop-btn" type="button" aria-expanded="false">產品<svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-menu">
+            <p class="menu-label">產品線</p>
+            <a href="#case"><span class="menu-title">TMCA 授權管理系統</span><span class="menu-desc">授權、續約、發票，一份總表管到底</span></a>
+            <a href="#case-kasukabe"><span class="menu-title">春日部 App</span><span class="menu-desc">定位打卡與積分獎勵的出勤管理</span></a>
+            <a href="#case-video"><span class="menu-title">AI 內容創作</span><span class="menu-desc">影片生產流水線，睡覺也在出片</span></a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <button class="nav-drop-btn" type="button" aria-expanded="false">解決方案<svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-menu">
+            <p class="menu-label">我們能幫你做的事</p>
+            <a href="#svc-system"><span class="menu-title">客製化管理系統</span><span class="menu-desc">按照你既有的作業流程設計</span></a>
+            <a href="#svc-data"><span class="menu-title">資料清洗與遷移</span><span class="menu-desc">十年舊資料，AI 理解、人工確認</span></a>
+            <a href="#svc-docs"><span class="menu-title">智慧文件自動化</span><span class="menu-desc">證書、發票、報表自動產出</span></a>
+            <a href="#svc-ai"><span class="menu-title">AI 導入顧問</span><span class="menu-desc">找出真正值得導入的環節</span></a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <button class="nav-drop-btn" type="button" aria-expanded="false">資源<svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-menu">
+            <p class="menu-label">認識駿騰</p>
+            <a href="#thesis"><span class="menu-title">我們的理念</span><span class="menu-desc">用 AI 完成第一層工作</span></a>
+            <a href="#process"><span class="menu-title">合作流程</span><span class="menu-desc">從需求訪談到每週迭代</span></a>
+            <a href="#case"><span class="menu-title">精選案例</span><span class="menu-desc">三套上線維運中的系統</span></a>
+            <a href="#contact"><span class="menu-title">聯絡我們</span><span class="menu-desc">30 分鐘免費諮詢，不推銷</span></a>
+          </div>
+        </div>
         <a href="#contact" class="nav-cta">預約諮詢</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
@@ -180,28 +205,28 @@
         <h2 class="sec-title">四件事，做到讓你放心交辦</h2>
       </header>
       <div class="service-list">
-        <article class="service-row reveal">
+        <article class="service-row reveal" id="svc-system">
           <h3>客製化管理系統</h3>
           <div>
             <p>按照你既有的作業流程量身打造，多人線上協作、權限分明、防止誤改。</p>
             <p class="row-tags">流程貼合・多人協作・權限控管</p>
           </div>
         </article>
-        <article class="service-row reveal">
+        <article class="service-row reveal" id="svc-data">
           <h3>資料清洗與遷移</h3>
           <div>
             <p>多年累積的混亂 Excel，AI 整理、人工確認，乾乾淨淨進系統。</p>
             <p class="row-tags">Excel 清洗・欄位對應・資料庫遷移</p>
           </div>
         </article>
-        <article class="service-row reveal">
+        <article class="service-row reveal" id="svc-docs">
           <h3>智慧文件自動化</h3>
           <div>
             <p>證書、信函、單據自動套印與批次寄送，重複的文書工作交給系統。</p>
             <p class="row-tags">模板套印・拍照建檔・信函批次</p>
           </div>
         </article>
-        <article class="service-row reveal">
+        <article class="service-row reveal" id="svc-ai">
           <h3>AI 導入顧問</h3>
           <div>
             <p>盤點流程、找出值得用 AI 的環節——也誠實告訴你哪裡不該用。</p>
@@ -232,6 +257,7 @@
                 <li>同樣的資料，重複 Key 好幾次</li>
                 <li>開發票前，先整合各處收來的表格</li>
                 <li>核發證書，翻大總表逐筆對照</li>
+                <li>檔案散在各自電腦，遺失難復原</li>
               </ul>
             </div>
             <div class="ba-col is-after">
@@ -241,6 +267,7 @@
                 <li>續約狀況一目瞭然，續約函批次生成</li>
                 <li>發票一次開立多張，號碼自動寫回</li>
                 <li>會計只需專注印發票，帳務統計交給系統</li>
+                <li>資料自動備份，不怕遺失</li>
               </ul>
             </div>
           </div>
@@ -261,7 +288,7 @@
       </div>
 
       <!-- 案例二：春日部 App -->
-      <div class="case2 reveal">
+      <div class="case2 reveal" id="case-kasukabe">
         <div class="case2-head">
           <h3>春日部 App──出勤與獎勵管理</h3>
           <span class="p-chip is-live">上線維運中</span>
@@ -280,7 +307,7 @@
       </div>
 
       <!-- 案例三：AI 內容創作 -->
-      <div class="case2 reveal">
+      <div class="case2 reveal" id="case-video">
         <div class="case2-head">
           <h3>AI 內容創作──影片生產流水線</h3>
           <span class="p-chip is-live">上線維運中</span>

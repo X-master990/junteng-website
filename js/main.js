@@ -28,13 +28,48 @@
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
   });
   links.addEventListener("click", function (e) {
-    if (e.target.tagName === "A") closeMenu();
+    if (e.target.closest("a")) {
+      closeMenu();
+      closeDrops();
+    }
   });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && links.classList.contains("open")) {
-      closeMenu();
-      toggle.focus();
+    if (e.key === "Escape") {
+      if (links.classList.contains("open")) {
+        closeMenu();
+        toggle.focus();
+      }
+      closeDrops();
     }
+  });
+
+  /* ---------- 桌面下拉選單（產品／解決方案／資源） ---------- */
+  var dropItems = Array.prototype.slice.call(document.querySelectorAll(".nav-item"));
+  function closeDrops(except) {
+    dropItems.forEach(function (item) {
+      if (item === except) return;
+      item.classList.remove("open");
+      var btn = item.querySelector(".nav-drop-btn");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+    });
+  }
+  dropItems.forEach(function (item) {
+    var btn = item.querySelector(".nav-drop-btn");
+    if (!btn) return;
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      closeDrops(item);
+      var open = item.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    /* 滑鼠移開後收合，避免點擊展開的面板卡住 */
+    item.addEventListener("mouseleave", function () {
+      item.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+    });
+  });
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".nav-item")) closeDrops();
   });
 
   /* ---------- 動畫：GSAP 電影感開場與捲動，失效時退回 CSS ---------- */
