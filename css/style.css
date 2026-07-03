@@ -190,10 +190,39 @@ html:not(.js-anim) .reveal {
 
 /* ============ Hero ============ */
 .hero {
+  position: relative;
   max-width: var(--measure);
   margin: 0 auto;
   padding: calc(var(--nav-h) + 84px) 24px 0;
   text-align: center;
+}
+.hero > * { position: relative; z-index: 1; }
+
+/* Dotted Surface 波浪點陣背景 */
+.dotted-surface {
+  position: absolute;
+  top: 0;
+  bottom: -40px;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+}
+.dotted-surface canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+.dotted-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(253, 253, 251, 0.72) 0%,
+    rgba(253, 253, 251, 0.25) 30%,
+    rgba(253, 253, 251, 0.45) 62%,
+    var(--paper) 96%);
 }
 .hero-eyebrow {
   font-family: var(--mono);
