@@ -799,6 +799,53 @@ html.js-anim .geo-shape { opacity: 0; }
   background: rgba(255, 255, 255, 0.06);
 }
 
+/* 案例二：春日部 App */
+.case2 {
+  margin-top: 72px;
+  padding: 34px 36px;
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.case2-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.case2-head h3 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  letter-spacing: 0.02em;
+}
+.case2-lead {
+  margin-top: 12px;
+  color: var(--graphite);
+  max-width: 66ch;
+}
+.case2-points {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.case2-points li {
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: var(--graphite);
+  line-height: 1.75;
+}
+.case2-points strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
 /* ============ 開發流程 ============ */
 .steps { counter-reset: step; }
 .step {
@@ -880,6 +927,7 @@ html.js-anim .geo-shape { opacity: 0; }
   .stat:nth-child(3) { border-left: 0; }
   .case-grid { grid-template-columns: 1fr; gap: 44px; }
   .ba-grid { grid-template-columns: 1fr; }
+  .case2-points { grid-template-columns: 1fr; }
   .product-grid { grid-template-columns: 1fr; }
   .service-row { grid-template-columns: 1fr; gap: 10px; padding: 28px 0; }
 }
