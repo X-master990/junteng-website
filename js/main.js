@@ -51,8 +51,9 @@
         { autoAlpha: 0, y: -150, rotation: rot - 15 },
         { autoAlpha: 1, y: 0, rotation: rot, duration: 2.4, delay: 0.3 + i * 0.1, ease: "power3.out" });
       gsap.to(el.querySelector(".geo-pill"), {
-        y: 15,
-        duration: 6,
+        y: 26,
+        rotation: 2.5,
+        duration: 4.5 + i * 0.8,
         yoyo: true,
         repeat: -1,
         ease: "sine.inOut",
