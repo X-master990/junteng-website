@@ -44,10 +44,26 @@
   if (useGsap) {
     gsap.registerPlugin(ScrollTrigger);
 
-    /* 開場時間軸：眉標 → 遮罩標題逐行升起 → 朱紅句號蓋章 → 導言與按鈕 → 總表浮現、資料列逐筆落定 */
+    /* 幾何膠囊：飛入後無限緩慢漂浮 */
+    gsap.utils.toArray(".geo-shape").forEach(function (el, i) {
+      var rot = parseFloat(el.getAttribute("data-rotate")) || 0;
+      gsap.fromTo(el,
+        { autoAlpha: 0, y: -150, rotation: rot - 15 },
+        { autoAlpha: 1, y: 0, rotation: rot, duration: 2.4, delay: 0.3 + i * 0.1, ease: "power3.out" });
+      gsap.to(el.querySelector(".geo-pill"), {
+        y: 15,
+        duration: 6,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut",
+        delay: 2.7 + i * 0.1
+      });
+    });
+
+    /* 開場時間軸：徽章 → 遮罩標題逐行升起 → 朱紅句號蓋章 → 導言與按鈕 → 總表浮現、資料列逐筆落定 */
     var intro = gsap.timeline({ defaults: { ease: "power3.out" } });
     intro
-      .fromTo(".hero-eyebrow", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.55 })
+      .fromTo(".hero-badge", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.55 })
       .set(".hero-title", { autoAlpha: 1 }, "<0.1")
       .fromTo(".hero-title .line",
         { yPercent: 115 },
