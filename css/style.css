@@ -1174,24 +1174,31 @@ html.js-anim .geo-shape { opacity: 0; }
 @media (max-width: 680px) {
   .nav-toggle { display: flex; z-index: 110; }
   .nav-links {
+    /* 注意：.nav 的 backdrop-filter 會把 fixed 定位改成以導覽列為基準，
+       不能用 inset:0，要明確給滿版寬高 */
     position: fixed;
-    inset: 0;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
     gap: 4px;
     padding: calc(var(--nav-h) + 20px) 32px 48px;
     font-size: 1rem;
-    background: rgba(3, 3, 3, 0.97);
+    background: #030303;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s;
     overflow-y: auto;
   }
   .nav-links.open { opacity: 1; pointer-events: auto; }
-  /* 手機：下拉群組攤平成分組清單 */
+  /* 手機：下拉群組攤平成分組清單。
+     選擇器要壓過桌面的 .nav-item.open .nav-menu，避免殘留的 open 狀態位移 */
   .nav-drop-btn { display: none; }
-  .nav-menu {
+  .nav-links .nav-menu,
+  .nav-item.open .nav-menu,
+  .nav-item:focus-within .nav-menu {
     position: static;
     min-width: 0;
     padding: 0 0 20px;
@@ -1206,7 +1213,7 @@ html.js-anim .geo-shape { opacity: 0; }
     transform: none;
     transition: none;
   }
-  .nav-menu::before { display: none; }
+  .nav-links .nav-menu::before { display: none; }
   .menu-label { margin: 0 0 6px; }
   .nav-links .nav-menu a { padding: 10px 0; }
   .nav-links .nav-menu a:hover { background-color: transparent; }
