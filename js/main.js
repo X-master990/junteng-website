@@ -127,6 +127,15 @@
       }
     });
 
+    /* 全頁環境背景：隨捲動視差漂移 */
+    gsap.utils.toArray(".ambient-bg .amb").forEach(function (el, i) {
+      gsap.to(el, {
+        y: (i % 2 ? 1 : -1) * (70 + i * 25),
+        ease: "none",
+        scrollTrigger: { start: 0, end: "max", scrub: 1.2 }
+      });
+    });
+
     /* 總表動態展示：系統逐格逐字自動填入每一筆資料 */
     function setupTypingDemo() {
       var app = document.querySelector(".pw-app");
