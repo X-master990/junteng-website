@@ -125,7 +125,6 @@ html:not(.js-anim) .reveal {
 .seal {
   display: block;
   width: 36px; height: 36px;
-  transform: rotate(-2deg);
   filter: drop-shadow(0 2px 12px rgba(198, 63, 31, 0.4));
   transition: transform 0.35s var(--ease), filter 0.35s;
   animation: stamp 0.5s var(--ease) 0.15s backwards;
@@ -133,14 +132,14 @@ html:not(.js-anim) .reveal {
 .seal svg { display: block; }
 @media (hover: hover) and (pointer: fine) {
   .brand:hover .seal {
-    transform: rotate(0deg) scale(1.05);
+    transform: scale(1.05);
     filter: drop-shadow(0 3px 16px rgba(198, 63, 31, 0.6));
   }
 }
 @keyframes stamp {
-  0%   { opacity: 0; transform: scale(1.5) rotate(-6deg); }
-  65%  { opacity: 1; transform: scale(0.94) rotate(-2deg); }
-  100% { opacity: 1; transform: scale(1) rotate(-2deg); }
+  0%   { opacity: 0; transform: scale(1.5); }
+  65%  { opacity: 1; transform: scale(0.94); }
+  100% { opacity: 1; transform: scale(1); }
 }
 .brand-text {
   display: flex;
