@@ -131,6 +131,9 @@
     function setupTypingDemo() {
       var app = document.querySelector(".pw-app");
       var toast = document.getElementById("demoToast");
+      var receipt = document.getElementById("demoReceipt");
+      var stamp = document.getElementById("demoStamp");
+      var printBtn = document.getElementById("demoPrint");
       var rows = Array.prototype.slice.call(document.querySelectorAll(".pw-table tbody tr"));
       if (!app || !rows.length) return null;
 
@@ -192,6 +195,8 @@
       function play() {
         if (document.hidden || !visible) { setTimeout(play, 1200); return; }
         clearAll();
+        if (receipt) gsap.set(receipt, { autoAlpha: 0, y: -14, clipPath: "inset(0 0 100% 0)" });
+        if (stamp) gsap.set(stamp, { autoAlpha: 0 });
         var idx = 0;
         (function next() {
           if (idx >= cells.length) { finish(); return; }
@@ -200,13 +205,27 @@
         })();
       }
 
+      /* 資料填完 → 列印發票 → 完成通知 → 重來 */
       function finish() {
-        if (toast) {
-          toast.textContent = "✓ 系統已自動填入 " + rows.length + " 筆資料";
-          gsap.fromTo(toast, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4 });
-          gsap.to(toast, { autoAlpha: 0, duration: 0.4, delay: 2.2 });
+        var tl = gsap.timeline({ onComplete: function () { setTimeout(play, 3600); } });
+        if (receipt && stamp) {
+          if (printBtn) {
+            tl.fromTo(printBtn, { scale: 1 }, { scale: 0.9, duration: 0.12, yoyo: true, repeat: 1, ease: "power1.inOut" }, "+=0.4");
+          }
+          tl.fromTo(receipt,
+              { autoAlpha: 1, y: -14, clipPath: "inset(0 0 100% 0)" },
+              { y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.85, ease: "power1.inOut" }, "+=0.1")
+            .fromTo(stamp,
+              { autoAlpha: 0, scale: 1.9, rotation: -22 },
+              { autoAlpha: 1, scale: 1, rotation: -10, duration: 0.4, ease: "back.out(2)" }, "+=0.15");
         }
-        setTimeout(play, 3800);
+        if (toast) {
+          tl.call(function () {
+              toast.textContent = "✓ 系統已自動填入 " + rows.length + " 筆資料・發票自動開立";
+            })
+            .fromTo(toast, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4 }, "+=0.25")
+            .to(receipt && stamp ? [receipt, toast] : toast, { autoAlpha: 0, duration: 0.45 }, "+=1.9");
+        }
       }
 
       /* 立刻清空，開場動畫先秀空表，再由系統打字填入 */
