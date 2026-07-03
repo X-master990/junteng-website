@@ -58,8 +58,8 @@
       .fromTo(".hero-lead", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.6 }, "-=0.3")
       .fromTo(".hero-actions", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.6 }, "-=0.42")
       .fromTo(".product-window",
-        { autoAlpha: 0, y: 60, scale: 0.97 },
-        { autoAlpha: 1, y: 0, scale: 1, duration: 1.05 }, "-=0.35")
+        { autoAlpha: 0, y: 70, rotationX: 26, scale: 0.94, transformPerspective: 1100, transformOrigin: "50% 0%" },
+        { autoAlpha: 1, y: 0, rotationX: 16, scale: 0.96, duration: 1.05 }, "-=0.35")
       .fromTo(".pw-table tbody tr",
         { autoAlpha: 0, y: 12 },
         { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.06 }, "-=0.55");
@@ -75,18 +75,22 @@
       }
     });
 
-    /* 總表微視差：開場結束後才啟用，避免與開場動畫互搶 */
+    /* Container Scroll：總表隨捲動從 3D 傾斜立正（開場結束後接手） */
     intro.eventCallback("onComplete", function () {
-      gsap.to(".product-window", {
-        y: -34,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".product-window",
-          start: "top 70%",
-          end: "bottom top",
-          scrub: 0.6
-        }
-      });
+      gsap.fromTo(".product-window",
+        { rotationX: 16, scale: 0.96, transformPerspective: 1100, transformOrigin: "50% 0%" },
+        {
+          rotationX: 0,
+          scale: 1,
+          y: -14,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".product-window",
+            start: "top 92%",
+            end: "top 32%",
+            scrub: 0.6
+          }
+        });
     });
   } else {
     /* 備援：拿掉 js-anim 讓 CSS 動畫接手，捲動漸入用 IntersectionObserver */

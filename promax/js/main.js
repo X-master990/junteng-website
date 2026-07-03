@@ -123,6 +123,15 @@
     }
   });
 
+  /* Lamp 點燈：進入系統實況區時光條展開、光束亮起、標題浮現 */
+  gsap.timeline({
+    scrollTrigger: { trigger: "#wfPin", start: "top 75%" },
+    defaults: { ease: "power3.out" }
+  })
+    .fromTo(".lamp-line", { scaleX: 0.3, autoAlpha: 0.35 }, { scaleX: 1, autoAlpha: 1, duration: 0.9 })
+    .fromTo(".lamp-beam, .lamp-glow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8 }, "<0.15")
+    .fromTo(".wf-head", { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.7 }, "-=0.5");
+
   /* Pinned 捲動敘事：桌面釘住區塊，捲動推進三個角色 */
   var steps = [
     { step: "#wfStep1", chip: "#wfChip1", role: "承辦" },
