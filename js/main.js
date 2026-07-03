@@ -127,134 +127,98 @@
       }
     });
 
-    /* 總表動態展示：假游標循環操作（篩選 → 續約 → 開發票） */
-    function setupDemo() {
+    /* 總表動態展示：系統逐格逐字自動填入每一筆資料 */
+    function setupTypingDemo() {
       var app = document.querySelector(".pw-app");
-      var filter = document.getElementById("demoFilter");
-      var chip = document.getElementById("demoChip");
-      var inv = document.getElementById("demoInv");
-      var roles = document.getElementById("demoRoles");
-      var printBtn = document.getElementById("demoPrint");
-      var receipt = document.getElementById("demoReceipt");
-      var stamp = document.getElementById("demoStamp");
-      var period = document.getElementById("demoPeriod");
-      var tag = document.getElementById("demoTag");
       var toast = document.getElementById("demoToast");
-      if (!app || !filter || !chip || !inv || !roles || !printBtn || !receipt || !stamp || !period || !tag || !toast) return;
+      var rows = Array.prototype.slice.call(document.querySelectorAll(".pw-table tbody tr"));
+      if (!app || !rows.length) return null;
 
-      var lead = roles.querySelector("b");
-      var acct = roles.querySelector("i");
-      var cursor = document.createElement("span");
-      cursor.className = "demo-cursor";
-      app.appendChild(cursor);
-      gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+      /* 快照每一格的目標內容，之後清空由系統重新打入 */
+      var cells = [];
+      rows.forEach(function (tr) {
+        Array.prototype.forEach.call(tr.cells, function (td) {
+          var chip = td.querySelector(".chip");
+          cells.push({
+            td: td,
+            chip: chip,
+            text: (chip ? chip.textContent : td.textContent).trim(),
+            rowStart: td.cellIndex === 0
+          });
+        });
+      });
 
-      var dimRows = Array.prototype.filter.call(
-        document.querySelectorAll(".pw-table tbody tr"),
-        function (tr) { return !tr.classList.contains("is-due"); }
-      );
+      function clearAll() {
+        cells.forEach(function (c) {
+          if (c.chip) {
+            c.chip.textContent = "";
+            c.chip.style.visibility = "hidden";
+          } else {
+            c.td.textContent = "";
+          }
+          c.td.classList.remove("typing");
+        });
+      }
 
       var visible = true;
       if ("IntersectionObserver" in window) {
         new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(app);
       }
 
-      function posOf(el) {
-        var a = app.getBoundingClientRect();
-        var r = el.getBoundingClientRect();
-        return { x: r.left - a.left + r.width / 2, y: r.top - a.top + r.height / 2 };
-      }
+      var CHAR_MS = 26;   /* 每個字的間隔 */
+      var CELL_GAP = 60;  /* 格與格之間的停頓 */
+      var ROW_GAP = 200;  /* 換列時的停頓 */
 
-      function reset() {
-        chip.textContent = "待續約";
-        chip.className = "chip chip-due";
-        inv.textContent = "—";
-        filter.textContent = "待續約 12";
-        filter.classList.remove("is-on");
-        lead.classList.remove("off");
-        acct.classList.remove("on");
-        period.textContent = "114.07.01–115.06.30";
-        gsap.set(dimRows, { opacity: 1 });
-        gsap.set(receipt, { autoAlpha: 0, y: -14, clipPath: "inset(0 0 100% 0)" });
-        gsap.set([stamp, tag, toast], { autoAlpha: 0 });
+      function typeCell(c, done) {
+        c.td.classList.add("typing");
+        if (c.chip) {
+          c.chip.style.visibility = "visible";
+          gsap.fromTo(c.chip, { scale: 0.6 }, { scale: 1, duration: 0.25, ease: "back.out(2)" });
+        }
+        var i = 0;
+        (function tick() {
+          if (document.hidden || !visible) { setTimeout(tick, 600); return; }
+          i++;
+          (c.chip || c.td).textContent = c.text.slice(0, i);
+          if (i < c.text.length) {
+            setTimeout(tick, CHAR_MS);
+          } else {
+            c.td.classList.remove("typing");
+            setTimeout(done, CELL_GAP);
+          }
+        })();
       }
 
       function play() {
-        if (document.hidden || !visible) { setTimeout(play, 1500); return; }
-        reset();
-        var pFilter = posOf(filter);
-        var pChip = posOf(chip);
-        var pInv = posOf(inv);
-        var pPrint = posOf(printBtn);
-        var invoiceNo = "XY-00000004";
-        var counter = { n: 0 };
-
-        gsap.timeline({ onComplete: function () { setTimeout(play, 3000); } })
-          /* 人只做兩個動作：篩選、點續約 */
-          .set(cursor, { x: pFilter.x + 90, y: pFilter.y + 110, autoAlpha: 0 })
-          .to(cursor, { autoAlpha: 1, duration: 0.25 })
-          .to(cursor, { x: pFilter.x, y: pFilter.y, duration: 0.65, ease: "power2.inOut" })
-          .to(cursor, { scale: 0.75, duration: 0.1, yoyo: true, repeat: 1 })
-          .call(function () { filter.classList.add("is-on"); })
-          .to(dimRows, { opacity: 0.22, duration: 0.35 }, "<")
-          .to(cursor, { x: pChip.x, y: pChip.y, duration: 0.65, ease: "power2.inOut" }, "+=0.3")
-          .to(cursor, { scale: 0.75, duration: 0.1, yoyo: true, repeat: 1 })
-          .to(cursor, { autoAlpha: 0, duration: 0.3 }, "+=0.1")
-
-          /* 之後全部由系統自動完成：標籤沿路飛 */
-          .call(function () {
-            tag.textContent = "⚡ 系統自動續約";
-            gsap.set(tag, { x: pChip.x - 40, y: pChip.y - 30 });
-          })
-          .to(tag, { autoAlpha: 1, y: pChip.y - 36, duration: 0.3 })
-          .call(function () {
-            chip.textContent = "已續約";
-            chip.className = "chip chip-ok";
-            filter.textContent = "待續約 11";
-            period.textContent = "115.07.01–116.06.30";
-          })
-          .fromTo(chip, { scale: 0.7 }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, "<")
-          .fromTo(period,
-            { backgroundColor: "rgba(198, 63, 31, 0.16)" },
-            { backgroundColor: "rgba(198, 63, 31, 0)", duration: 0.9 }, "<")
-
-          .call(function () { lead.classList.add("off"); acct.classList.add("on"); }, null, "+=0.55")
-          .to(tag, { x: pInv.x - 40, y: pInv.y - 36, duration: 0.45, ease: "power2.inOut" }, "<")
-          .call(function () { tag.textContent = "⚡ 自動配號"; }, null, "<0.25")
-          .to(counter, {
-            n: invoiceNo.length,
-            duration: 0.5,
-            ease: "none",
-            onUpdate: function () {
-              inv.textContent = invoiceNo.slice(0, Math.round(counter.n)) || "—";
-            }
-          })
-          .fromTo(inv,
-            { backgroundColor: "rgba(198, 63, 31, 0.16)" },
-            { backgroundColor: "rgba(198, 63, 31, 0)", duration: 0.9 }, "<")
-
-          .to(tag, { x: pPrint.x - 40, y: pPrint.y - 36, duration: 0.45, ease: "power2.inOut" }, "+=0.4")
-          .call(function () { tag.textContent = "⚡ 自動列印"; }, null, "<0.25")
-          .fromTo(receipt,
-            { autoAlpha: 1, y: -14, clipPath: "inset(0 0 100% 0)" },
-            { y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.85, ease: "power1.inOut" }, "+=0.15")
-          .fromTo(stamp,
-            { autoAlpha: 0, scale: 1.9, rotation: -22 },
-            { autoAlpha: 1, scale: 1, rotation: -10, duration: 0.4, ease: "back.out(2)" }, "+=0.15")
-          .to(tag, { autoAlpha: 0, duration: 0.25 }, "<")
-
-          /* 完成通知 */
-          .fromTo(toast, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4 }, "+=0.3")
-          .to(receipt, { autoAlpha: 0, y: 10, duration: 0.45 }, "+=1.7")
-          .to(toast, { autoAlpha: 0, duration: 0.4 }, "<");
+        if (document.hidden || !visible) { setTimeout(play, 1200); return; }
+        clearAll();
+        var idx = 0;
+        (function next() {
+          if (idx >= cells.length) { finish(); return; }
+          var c = cells[idx++];
+          setTimeout(function () { typeCell(c, next); }, c.rowStart && idx > 1 ? ROW_GAP : 0);
+        })();
       }
 
-      setTimeout(play, 1400);
+      function finish() {
+        if (toast) {
+          toast.textContent = "✓ 系統已自動填入 " + rows.length + " 筆資料";
+          gsap.fromTo(toast, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4 });
+          gsap.to(toast, { autoAlpha: 0, duration: 0.4, delay: 2.2 });
+        }
+        setTimeout(play, 3800);
+      }
+
+      /* 立刻清空，開場動畫先秀空表，再由系統打字填入 */
+      clearAll();
+      return { start: function () { setTimeout(play, 600); } };
     }
+
+    var typingDemo = setupTypingDemo();
 
     /* Container Scroll：總表隨捲動從 3D 傾斜立正（開場結束後接手） */
     intro.eventCallback("onComplete", function () {
-      setupDemo();
+      if (typingDemo) typingDemo.start();
       gsap.fromTo(".product-window",
         { rotationX: 16, scale: 0.96, transformPerspective: 1100, transformOrigin: "50% 0%" },
         {
