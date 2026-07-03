@@ -99,7 +99,13 @@
       var chip = document.getElementById("demoChip");
       var inv = document.getElementById("demoInv");
       var roles = document.getElementById("demoRoles");
-      if (!app || !filter || !chip || !inv || !roles) return;
+      var printBtn = document.getElementById("demoPrint");
+      var receipt = document.getElementById("demoReceipt");
+      var stamp = document.getElementById("demoStamp");
+      var period = document.getElementById("demoPeriod");
+      var tag = document.getElementById("demoTag");
+      var toast = document.getElementById("demoToast");
+      if (!app || !filter || !chip || !inv || !roles || !printBtn || !receipt || !stamp || !period || !tag || !toast) return;
 
       var lead = roles.querySelector("b");
       var acct = roles.querySelector("i");
@@ -132,7 +138,10 @@
         filter.classList.remove("is-on");
         lead.classList.remove("off");
         acct.classList.remove("on");
+        period.textContent = "114.07.01–115.06.30";
         gsap.set(dimRows, { opacity: 1 });
+        gsap.set(receipt, { autoAlpha: 0, y: -14, clipPath: "inset(0 0 100% 0)" });
+        gsap.set([stamp, tag, toast], { autoAlpha: 0 });
       }
 
       function play() {
@@ -141,35 +150,68 @@
         var pFilter = posOf(filter);
         var pChip = posOf(chip);
         var pInv = posOf(inv);
+        var pPrint = posOf(printBtn);
         var invoiceNo = "KA-22841139";
         var counter = { n: 0 };
 
-        gsap.timeline({ onComplete: function () { setTimeout(play, 2800); } })
+        gsap.timeline({ onComplete: function () { setTimeout(play, 3000); } })
+          /* 人只做兩個動作：篩選、點續約 */
           .set(cursor, { x: pFilter.x + 90, y: pFilter.y + 110, autoAlpha: 0 })
           .to(cursor, { autoAlpha: 1, duration: 0.25 })
-          .to(cursor, { x: pFilter.x, y: pFilter.y, duration: 0.7, ease: "power2.inOut" })
+          .to(cursor, { x: pFilter.x, y: pFilter.y, duration: 0.65, ease: "power2.inOut" })
           .to(cursor, { scale: 0.75, duration: 0.1, yoyo: true, repeat: 1 })
           .call(function () { filter.classList.add("is-on"); })
-          .to(dimRows, { opacity: 0.22, duration: 0.4 }, "<")
-          .to(cursor, { x: pChip.x, y: pChip.y, duration: 0.7, ease: "power2.inOut" }, "+=0.4")
+          .to(dimRows, { opacity: 0.22, duration: 0.35 }, "<")
+          .to(cursor, { x: pChip.x, y: pChip.y, duration: 0.65, ease: "power2.inOut" }, "+=0.3")
           .to(cursor, { scale: 0.75, duration: 0.1, yoyo: true, repeat: 1 })
+          .to(cursor, { autoAlpha: 0, duration: 0.3 }, "+=0.1")
+
+          /* 之後全部由系統自動完成：標籤沿路飛 */
+          .call(function () {
+            tag.textContent = "⚡ 系統自動續約";
+            gsap.set(tag, { x: pChip.x - 40, y: pChip.y - 30 });
+          })
+          .to(tag, { autoAlpha: 1, y: pChip.y - 36, duration: 0.3 })
           .call(function () {
             chip.textContent = "已續約";
             chip.className = "chip chip-ok";
             filter.textContent = "待續約 11";
+            period.textContent = "115.07.01–116.06.30";
           })
-          .fromTo(chip, { scale: 0.7 }, { scale: 1, duration: 0.35, ease: "back.out(2.5)" })
-          .call(function () { lead.classList.add("off"); acct.classList.add("on"); }, null, "+=0.35")
-          .to(cursor, { x: pInv.x, y: pInv.y, duration: 0.6, ease: "power2.inOut" })
+          .fromTo(chip, { scale: 0.7 }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, "<")
+          .fromTo(period,
+            { backgroundColor: "rgba(198, 63, 31, 0.16)" },
+            { backgroundColor: "rgba(198, 63, 31, 0)", duration: 0.9 }, "<")
+
+          .call(function () { lead.classList.add("off"); acct.classList.add("on"); }, null, "+=0.55")
+          .to(tag, { x: pInv.x - 40, y: pInv.y - 36, duration: 0.45, ease: "power2.inOut" }, "<")
+          .call(function () { tag.textContent = "⚡ 自動配號"; }, null, "<0.25")
           .to(counter, {
             n: invoiceNo.length,
-            duration: 0.8,
+            duration: 0.5,
             ease: "none",
             onUpdate: function () {
               inv.textContent = invoiceNo.slice(0, Math.round(counter.n)) || "—";
             }
           })
-          .to(cursor, { autoAlpha: 0, duration: 0.3 }, "+=1");
+          .fromTo(inv,
+            { backgroundColor: "rgba(198, 63, 31, 0.16)" },
+            { backgroundColor: "rgba(198, 63, 31, 0)", duration: 0.9 }, "<")
+
+          .to(tag, { x: pPrint.x - 40, y: pPrint.y - 36, duration: 0.45, ease: "power2.inOut" }, "+=0.4")
+          .call(function () { tag.textContent = "⚡ 自動列印"; }, null, "<0.25")
+          .fromTo(receipt,
+            { autoAlpha: 1, y: -14, clipPath: "inset(0 0 100% 0)" },
+            { y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.85, ease: "power1.inOut" }, "+=0.15")
+          .fromTo(stamp,
+            { autoAlpha: 0, scale: 1.9, rotation: -22 },
+            { autoAlpha: 1, scale: 1, rotation: -10, duration: 0.4, ease: "back.out(2)" }, "+=0.15")
+          .to(tag, { autoAlpha: 0, duration: 0.25 }, "<")
+
+          /* 完成通知 */
+          .fromTo(toast, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4 }, "+=0.3")
+          .to(receipt, { autoAlpha: 0, y: 10, duration: 0.45 }, "+=1.7")
+          .to(toast, { autoAlpha: 0, duration: 0.4 }, "<");
       }
 
       setTimeout(play, 1400);

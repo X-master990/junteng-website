@@ -443,6 +443,120 @@ html.js-anim .geo-shape { opacity: 0; }
   gap: 4px;
   font-style: normal;
 }
+.pw-print {
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: #1C1B18;
+  color: #fff;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* 發票單據（demo 印出） */
+.pw-receipt {
+  position: absolute;
+  top: 58px;
+  right: 34px;
+  width: 212px;
+  z-index: 4;
+  transform: rotate(-1.5deg);
+  filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.3));
+  pointer-events: none;
+  opacity: 0;
+}
+.r-paper {
+  position: relative;
+  background: #FFFDF6;
+  color: #1C1B18;
+  padding: 16px 16px 20px;
+  font-family: var(--mono);
+}
+.r-title {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-align: center;
+  font-weight: 500;
+}
+.r-period {
+  font-size: 10px;
+  text-align: center;
+  color: #6E6B64;
+  margin-top: 2px;
+}
+.r-no {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin: 8px 0 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #D8D4C8;
+}
+.r-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  margin-top: 6px;
+  color: #47443E;
+}
+.r-stamp {
+  position: absolute;
+  right: 10px;
+  bottom: 12px;
+  padding: 5px 10px;
+  background: rgba(198, 63, 31, 0.92);
+  color: #fff;
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  border-radius: 6px;
+  transform: rotate(-10deg);
+  opacity: 0;
+}
+.r-zig {
+  height: 8px;
+  background:
+    linear-gradient(-45deg, #FFFDF6 5.66px, transparent 0),
+    linear-gradient(45deg, #FFFDF6 5.66px, transparent 0);
+  background-size: 16px 16px;
+  background-repeat: repeat-x;
+}
+
+/* 自動化標籤與完成通知（demo） */
+.auto-tag {
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 6;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #C63F1F;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(198, 63, 31, 0.4);
+  pointer-events: none;
+  opacity: 0;
+}
+.pw-toast {
+  position: absolute;
+  right: 14px;
+  bottom: 40px;
+  z-index: 6;
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: #1C1B18;
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  opacity: 0;
+}
 .pw-roles b, .pw-roles i {
   font-style: normal;
   font-weight: 500;
