@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://x-master990.github.io/junteng-website/sitemap.xml

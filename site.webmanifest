@@ -1,0 +1,13 @@
+{
+  "name": "駿騰智能 JunTeng Intelligence",
+  "short_name": "駿騰智能",
+  "description": "為協會、公會與中小企業打造貼合作業流程的管理系統。",
+  "start_url": "/junteng-website/",
+  "display": "standalone",
+  "background_color": "#030303",
+  "theme_color": "#030303",
+  "icons": [
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

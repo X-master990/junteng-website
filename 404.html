@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>找不到頁面｜駿騰智能</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23D8532F'/%3E%3Cstop offset='1' stop-color='%23A93015'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath transform='translate(-8 0)' fill='url(%23g)' fill-rule='evenodd' d='M30 92 L30 60 Q30 38 44 27 L48 8 L59 21 Q76 27 83 43 L86 55 L70 56 Q62 48 57 50 Q66 60 68 77 L68 92 Z M58 32 L60 41 L66 36 Z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      background: #030303;
+      color: #F4F3F0;
+      font-family: "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+      padding: 24px;
+      position: relative; overflow: hidden;
+    }
+    .glow {
+      position: absolute; top: 50%; left: 50%;
+      width: 640px; height: 640px; transform: translate(-50%, -60%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(198,63,31,0.16) 0%, rgba(198,63,31,0) 70%);
+      pointer-events: none;
+    }
+    .wrap { position: relative; z-index: 2; }
+    .seal { width: 64px; height: 64px; margin: 0 auto 28px; display: block; }
+    .code {
+      font-family: "Noto Serif TC", serif; font-weight: 900;
+      font-size: clamp(4rem, 16vw, 7rem); line-height: 1;
+      background: linear-gradient(92deg, #F4F3F0 0%, #E0644A 70%, #C63F1F 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h1 {
+      font-family: "Noto Serif TC", serif; font-weight: 700;
+      font-size: clamp(1.4rem, 5vw, 2rem); margin-top: 18px; letter-spacing: 0.02em;
+    }
+    p { color: #A6A4AD; margin-top: 14px; line-height: 1.8; }
+    .home {
+      display: inline-block; margin-top: 34px;
+      padding: 14px 36px; border-radius: 999px;
+      background: #F4F3F0; color: #030303;
+      font-weight: 500; letter-spacing: 0.06em; text-decoration: none;
+      transition: background 0.25s, color 0.25s, transform 0.25s cubic-bezier(0.22,1,0.36,1);
+    }
+    .home:hover { background: #C63F1F; color: #fff; transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="wrap">
+    <svg class="seal" viewBox="0 0 100 100" aria-hidden="true">
+      <defs><linearGradient id="s" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#D8532F"/><stop offset="1" stop-color="#A93015"/>
+      </linearGradient></defs>
+      <path transform="translate(-8 0)" fill="url(#s)" fill-rule="evenodd"
+        d="M30 92 L30 60 Q30 38 44 27 L48 8 L59 21 Q76 27 83 43 L86 55 L70 56 Q62 48 57 50 Q66 60 68 77 L68 92 Z M58 32 L60 41 L66 36 Z"/>
+    </svg>
+    <div class="code">404</div>
+    <h1>這一頁走失了</h1>
+    <p>你要找的頁面不存在，或已經被移動。<br>讓我們帶你回到主頁。</p>
+    <a class="home" href="/junteng-website/">回到首頁</a>
+  </div>
+</body>
+</html>
