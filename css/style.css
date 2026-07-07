@@ -1216,7 +1216,7 @@ html.js-anim .geo-shape { opacity: 0; }
 .why-num {
   font-family: var(--mono);
   font-size: 0.9rem;
-  color: var(--seal);
+  color: #E0644A; /* 小字用較亮朱紅，對比 6.0:1 過 WCAG AA */
   letter-spacing: 0.12em;
 }
 .why-card h3 {
@@ -1279,7 +1279,7 @@ html.js-anim .geo-shape { opacity: 0; }
   letter-spacing: 0.04em;
   margin-bottom: 7px;
 }
-.lf-field > span b { color: var(--seal); font-weight: 400; }
+.lf-field > span b { color: #E0644A; font-weight: 400; } /* 必填星號：較亮朱紅過 AA */
 .lf-field input,
 .lf-field textarea {
   width: 100%;
@@ -1294,7 +1294,7 @@ html.js-anim .geo-shape { opacity: 0; }
 }
 .lf-field textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
 .lf-field input::placeholder,
-.lf-field textarea::placeholder { color: rgba(166, 164, 173, 0.5); }
+.lf-field textarea::placeholder { color: rgba(166, 164, 173, 0.72); } /* 提高提示文字對比至約 4.7:1 */
 .lf-field input:focus,
 .lf-field textarea:focus {
   outline: none;

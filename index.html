@@ -56,6 +56,30 @@
     ]
   }
   </script>
+
+  <!-- ===== FAQ 結構化資料：可讓問答直接出現在 Google 搜尋結果 ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "我們的資料安全嗎？放在哪裡？",
+        "acceptedAnswer": { "@type": "Answer", "text": "系統資料存放於雲端資料庫、每日自動備份；權限依角色分明，每一筆修改都留下可追溯的變更紀錄。你的資料不會散在各自電腦，也不怕誤刪難復原。" } },
+      { "@type": "Question", "name": "會不會被你們綁死？資料拿得回來嗎？",
+        "acceptedAnswer": { "@type": "Answer", "text": "資料是你的。系統支援匯出成 Excel／標準格式，你隨時可以把完整資料帶走，不會被綁在我們身上。" } },
+      { "@type": "Question", "name": "大概多少錢？怎麼計費？",
+        "acceptedAnswer": { "@type": "Answer", "text": "依系統範圍與模組數量報價。先用 30 分鐘免費諮詢盤點需求，再給你明確的報價與時程——不會先收費，也不推銷。" } },
+      { "@type": "Question", "name": "多久可以上線？",
+        "acceptedAnswer": { "@type": "Answer", "text": "需求訪談到可以點的原型大約三週；之後每週交付可用功能。完整上線時間依範圍而定，過程中你隨時看得到進度。" } },
+      { "@type": "Question", "name": "我們資料很亂、還在用 Excel，能處理嗎？",
+        "acceptedAnswer": { "@type": "Answer", "text": "可以，這正是我們的專長。多年份、格式混亂的 Excel，AI 逐格理解並提出修正建議，人工逐筆確認後才寫入系統。" } },
+      { "@type": "Question", "name": "一定要導入 AI 嗎？",
+        "acceptedAnswer": { "@type": "Answer", "text": "不用。我們會誠實告訴你哪裡值得用 AI、哪裡不該用。金額與序號這類不能出錯的部分，一律走確定性規則，不交給 AI 判斷。" } },
+      { "@type": "Question", "name": "上線之後還有人維護嗎？",
+        "acceptedAnswer": { "@type": "Answer", "text": "有。上線不是結束——我們持續監控、優化，並隨你的業務成長加開功能。" } }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#top">跳到主要內容</a>
