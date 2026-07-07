@@ -1190,6 +1190,77 @@ html.js-anim .geo-shape { opacity: 0; }
   letter-spacing: 0.05em;
 }
 
+/* ============ 為什麼選駿騰 ============ */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: var(--measure);
+  margin: 0 auto;
+}
+@media (max-width: 720px) { .why-grid { grid-template-columns: 1fr; } }
+.why-card {
+  padding: 32px 30px;
+  border: 1px solid var(--hairline);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.25s, background 0.25s, transform 0.25s var(--ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .why-card:hover {
+    border-color: rgba(198, 63, 31, 0.4);
+    background: rgba(198, 63, 31, 0.04);
+    transform: translateY(-3px);
+  }
+}
+.why-num {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--seal);
+  letter-spacing: 0.12em;
+}
+.why-card h3 {
+  margin: 14px 0 10px;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.why-card p { color: var(--graphite); line-height: 1.85; }
+
+/* ============ 常見問答 FAQ ============ */
+.faq-list { max-width: 820px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--hairline); }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 22px 46px 22px 4px;
+  font-size: 1.06rem;
+  font-weight: 500;
+  color: var(--ink);
+  transition: color 0.2s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: #E0644A; }
+.faq-mark {
+  position: absolute;
+  right: 8px; top: 50%;
+  width: 14px; height: 14px;
+  margin-top: -7px;
+}
+.faq-mark::before, .faq-mark::after {
+  content: "";
+  position: absolute;
+  background: var(--seal);
+  border-radius: 2px;
+  transition: opacity 0.25s var(--ease);
+}
+.faq-mark::before { left: 0; top: 6px; width: 14px; height: 2px; }
+.faq-mark::after { left: 6px; top: 0; width: 2px; height: 14px; }
+.faq-item[open] .faq-mark::after { opacity: 0; }
+.faq-body { padding: 0 46px 24px 4px; }
+.faq-body p { color: var(--graphite); line-height: 1.9; }
+
 /* ============ 聯絡表單 ============ */
 .lead-form {
   max-width: 620px;
