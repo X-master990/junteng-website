@@ -1291,3 +1291,109 @@ html.js-anim .geo-shape { opacity: 0; }
   .rise, .reveal { opacity: 1; transform: none; }
   html.js-anim .geo-shape { opacity: 1; }
 }
+
+/* ============ 清楚定位調整：痛點與方案 ============ */
+.hero-pains {
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 780px;
+}
+.hero-pains li {
+  padding: 7px 13px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(244, 243, 240, 0.78);
+  font-size: 0.88rem;
+}
+
+.pain-grid,
+.solution-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.pain-card,
+.solution-card {
+  position: relative;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+}
+.pain-mark {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: #E0644A;
+  letter-spacing: 0.12em;
+}
+.pain-card h3,
+.solution-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.pain-card p,
+.solution-card p {
+  margin-top: 10px;
+  color: var(--graphite);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.solution-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+.solution-card {
+  padding: 30px 28px;
+  border-top: 3px solid rgba(198, 63, 31, 0.72);
+}
+.solution-for {
+  margin: 0 0 14px !important;
+  font-family: var(--mono);
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em;
+  color: rgba(244, 243, 240, 0.54) !important;
+}
+.solution-card ul {
+  margin-top: 22px;
+  display: grid;
+  gap: 10px;
+}
+.solution-card li {
+  position: relative;
+  padding-left: 18px;
+  color: rgba(244, 243, 240, 0.82);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+.solution-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 7px;
+  height: 7px;
+  background: var(--seal);
+  border-radius: 2px;
+  transform: rotate(-2deg);
+}
+.case-eyebrow {
+  margin-bottom: 12px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  color: #E0644A;
+}
+
+@media (max-width: 980px) {
+  .solution-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .pain-grid { grid-template-columns: 1fr; }
+  .hero-pains { justify-content: flex-start; }
+}
