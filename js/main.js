@@ -316,4 +316,48 @@
   } else {
     counters.forEach(animateCount);
   }
+
+  /* ---------- 聯絡表單：AJAX 送出，留在頁面顯示結果（自 website-improvements 合併） ---------- */
+  var leadForm = document.getElementById("leadForm");
+  if (leadForm) {
+    var lfStatus = document.getElementById("lfStatus");
+    var lfBtn = leadForm.querySelector(".lf-submit");
+    leadForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      /* 尚未設定 Formspree 端點：引導訪客改用 LINE / Email，不送到壞掉的網址 */
+      if (leadForm.action.indexOf("YOUR_FORM_ID") !== -1) {
+        lfStatus.className = "lf-status is-err";
+        lfStatus.textContent = "表單設定中，暫時請改用下方 LINE 或來信諮詢。";
+        return;
+      }
+
+      lfStatus.className = "lf-status";
+      lfStatus.textContent = "傳送中…";
+      if (lfBtn) lfBtn.disabled = true;
+
+      fetch(leadForm.action, {
+        method: "POST",
+        body: new FormData(leadForm),
+        headers: { "Accept": "application/json" }
+      })
+        .then(function (res) {
+          if (res.ok) {
+            leadForm.reset();
+            lfStatus.className = "lf-status is-ok";
+            lfStatus.textContent = "✓ 已收到，我們會盡快與你聯絡，謝謝！";
+          } else {
+            lfStatus.className = "lf-status is-err";
+            lfStatus.textContent = "送出時發生問題，請改用下方 LINE 或來信諮詢。";
+          }
+        })
+        .catch(function () {
+          lfStatus.className = "lf-status is-err";
+          lfStatus.textContent = "網路連線異常，請改用下方 LINE 或來信諮詢。";
+        })
+        .then(function () {
+          if (lfBtn) lfBtn.disabled = false;
+        });
+    });
+  }
 })();

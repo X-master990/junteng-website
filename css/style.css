@@ -1397,3 +1397,76 @@ html.js-anim .geo-shape { opacity: 0; }
   .pain-grid { grid-template-columns: 1fr; }
   .hero-pains { justify-content: flex-start; }
 }
+
+/* ============ 聯絡表單（自 website-improvements 合併）============ */
+.lead-form {
+  max-width: 620px;
+  margin: 8px auto 0;
+  text-align: left;
+}
+.lf-row { display: flex; gap: 16px; }
+@media (max-width: 560px) {
+  .lf-row { flex-direction: column; gap: 0; }
+}
+.lf-field { display: block; flex: 1; margin-bottom: 16px; }
+.lf-field > span {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--graphite);
+  letter-spacing: 0.04em;
+  margin-bottom: 7px;
+}
+.lf-field > span b { color: #E0644A; font-weight: 400; } /* 必填星號：較亮朱紅過 AA */
+.lf-field input,
+.lf-field textarea {
+  width: 100%;
+  padding: 13px 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.lf-field textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
+.lf-field input::placeholder,
+.lf-field textarea::placeholder { color: rgba(166, 164, 173, 0.72); } /* 提示文字對比約 4.7:1 */
+.lf-field input:focus,
+.lf-field textarea:focus {
+  outline: none;
+  border-color: var(--seal);
+  background: rgba(198, 63, 31, 0.06);
+}
+.lf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.lf-submit {
+  margin-top: 6px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+}
+.lf-submit:disabled { opacity: 0.55; cursor: progress; }
+.lf-status {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  min-height: 1.3em;
+  letter-spacing: 0.03em;
+}
+.lf-status.is-ok { color: #6FCF97; }
+.lf-status.is-err { color: #E0644A; }
+
+/* 替代聯絡方式 */
+.contact-alt { margin-top: 44px; }
+.contact-alt-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--graphite);
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+.btn-lineoa {
+  border: 1px solid rgba(6, 199, 85, 0.5);
+  color: #EAFBF1;
+  background: rgba(6, 199, 85, 0.10);
+}
+.btn-lineoa:hover { border-color: #06C755; background: rgba(6, 199, 85, 0.2); }
